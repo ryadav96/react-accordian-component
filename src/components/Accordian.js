@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AccordianPanel from "./AccordianPanel";
+import RegistrationForm from "./RegistrationForm";
 const tabDetails = [
   {
     title: "New Title",
@@ -24,9 +25,10 @@ const tabDetails = [
 ];
 
 class Accordian extends Component {
+ 
   state = { mockData: tabDetails };
-  togglePanel(e) {
-    console.log(e);
+  togglePanel(e, event) {
+    const element = event.target;
     const accordianListKey = Object.keys(tabDetails);
     accordianListKey.forEach((listDetail, index) => {
       if (e !== index) {
@@ -38,6 +40,7 @@ class Accordian extends Component {
       }
     });
     this.setState({ mockData: tabDetails });
+    element.scrollIntoView();
   }
 
   render() {
@@ -47,10 +50,22 @@ class Accordian extends Component {
           id={tabDetail.title}
           tabDetail={tabDetail}
           onTabClick={e => {
-            this.togglePanel(i);
+            this.togglePanel(i, e);
           }}
         >
-          <p>CONTENT OF ACCORDIAN</p>
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
+          <RegistrationForm />
         </AccordianPanel>
       );
     });
